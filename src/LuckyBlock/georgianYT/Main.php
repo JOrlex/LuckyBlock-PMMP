@@ -109,7 +109,6 @@ class Main extends PluginBase implements Listener
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getServer()->getCommandMap()->register("luckyblock", new Commands($this, $this->setup, $this->data));
     }
-
     public function reloadSetup(&$data = false, &$setup = false)
     {
         $this->setup->save();
@@ -130,7 +129,6 @@ class Main extends PluginBase implements Listener
                 $this->data["explosion_max"] = $this->setup->get("explosion_max");
             }
         }
-
         $this->data["lucky_block"] = $this->getItem($this->setup->get("lucky_block"))->getId();
         if ($this->data["lucky_block"] === Block::AIR)
             $this->data["lucky_block"] = Block::SPONGE;
@@ -166,7 +164,6 @@ class Main extends PluginBase implements Listener
         $data = $this->data;
         $setup = $this->setup;
     }
-
     public function getItem($string): Item
     {
         $e = explode(":", $string);
@@ -186,7 +183,6 @@ class Main extends PluginBase implements Listener
         }
         return new Item(0);
     }
-
     public function isExists(array $arr, Item $item): bool
     {
         foreach ($arr as $it) {
@@ -197,7 +193,6 @@ class Main extends PluginBase implements Listener
         }
         return false;
     }
-
     public function isExistsEntity($name): bool
     {
         $nbt = new CompoundTag("", [
@@ -218,7 +213,6 @@ class Main extends PluginBase implements Listener
         $entity->close();
         return true;
     }
-
     public function isAllowedWorld(Level $level): bool
     {
         if ($this->data["status"] !== "on")
@@ -235,9 +229,7 @@ class Main extends PluginBase implements Listener
             }
         }
         return false;
-    }
-
-    /** Thanks to @dxm_hippie for this code */
+    } //lol so many errors i think
     private function itemLoop(Player $player, Position $pos): bool
     {
         if (mt_rand(1, 2) === 2) {
@@ -251,7 +243,6 @@ class Main extends PluginBase implements Listener
         }
         return false;
     }
-
     private function itemLoop2(Player $player, Position $pos)
     {
         if (mt_rand(1, 3) === 2) {
